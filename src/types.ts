@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Ref } from '@vue/composition-api';
 
 type KeyFunction = () => string;
@@ -14,8 +15,18 @@ export type StateRef<Data, Error> = {
 
 export type CacheListeners = (...args: any[]) => void;
 
+export type Config = {
+  ttl: number;
+  refetchOnMount: boolean;
+  refetchOnReconnect: boolean;
+  refetchOnWindowFocus: boolean;
+  retry: number;
+};
+
 export interface CacheItem {
   data: any;
   createdAt: number;
   expiresAt: number;
 }
+
+export type Fetcher<Data> = (...args: any) => Data | Promise<Data>;
