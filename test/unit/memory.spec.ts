@@ -1,15 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { MemoryCache } from '@/cache/memory';
-/*import Vue from 'vue';
-
-jest.useFakeTimers();
-const timeout: Function = (milliseconds: number) => jest.advanceTimersByTime(milliseconds);
-
-const tick: Function = async (vm: Vue, times: number) => {
-  for (const _time in [...Array(times).keys()]) {
-    await vm.$nextTick();
-  }
-};*/
 
 describe('> Memory Cache', () => {
   let memoryCache: MemoryCache;
@@ -46,7 +36,7 @@ describe('> Memory Cache', () => {
     memoryCache.set('faker', { hello: 'world' }, 0);
   });
 
-  it('Should clear cache', (done) => {
+  it('# Should clear cache', (done) => {
     const listener = (key: string) => {
       if (key !== 'faker') {
         expect(memoryCache.size()).toEqual(0);
