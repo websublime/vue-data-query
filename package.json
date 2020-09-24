@@ -1,0 +1,108 @@
+{
+  "name": "@ws/vue-data-query",
+  "version": "0.0.1",
+  "description": "The Vue SWR plugin.",
+  "main": "dist/vuex-data.cjs.js",
+  "browser": "dist/vue-data-query.esm-browser.js",
+  "module": "dist/vue-data-query.esm-bundler.js",
+  "unpkg": "dist/vue-data-query.global.js",
+  "jsdelivr": "dist/vue-data-query.global.js",
+  "typings": "dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build:dts": "api-extractor run --local --verbose",
+    "clean": "rm -rf dist coverage temp .nyc_output .tmp",
+    "eslint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "eslint:ci": "eslint '*/**/*.{js,ts,tsx}' --quiet",
+    "lint": "prettier --check --write --parser typescript \"{src,test}/**/*.ts\"",
+    "lint:fail": "prettier --check --parser typescript \"{src,test}/**/*.ts\"",
+    "test": "jest --testPathIgnorePatterns test/performance",
+    "test:watch": "jest --testPathIgnorePatterns test/performance --watch",
+    "test:perf": "jest --testPathIgnorePatterns test/{feature,unit}",
+    "test:perf:watch": "jest --testPathIgnorePatterns test/{feature,unit} --watch",
+    "test:all": "jest",
+    "coverage": "jest --testPathIgnorePatterns test/performance --collect-coverage",
+    "docs": "vuepress dev docs",
+    "docs:build": "yarn docs:build:guide && yarn docs:build:api",
+    "docs:build:guide": "vuepress build docs",
+    "docs:build:api": "yarn build && api-documenter markdown --input-folder temp --output-folder docs-api",
+    "docs:deploy": "bash ./docs/deploy.sh",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "node scripts/release.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/websublime/vue-data-query.git"
+  },
+  "keywords": [
+    "vue",
+    "swr",
+    "vue-plugin",
+    "vue-data-query"
+  ],
+  "author": "Miguel Ramos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/websublime/vue-data-query/issues"
+  },
+  "peerDependencies": {
+    "vue": ">=2.6.0",
+    "vuex": ">=3.1.0",
+    "@vue/composition-api": "^1.0.0-beta.14"
+  },
+  "dependencies": {
+    "@types/uuid": "^8.3.0",
+    "normalizr": "^3.6.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.8.49",
+    "@microsoft/api-extractor": "^7.9.15",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@types/jest": "^26.0.14",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "axios": "^0.20.0",
+    "brotli": "^1.3.2",
+    "chalk": "^4.1.0",
+    "codecov": "^3.7.2",
+    "conventional-changelog-cli": "^2.1.0",
+    "core-js": "^3.6.5",
+    "enquirer": "^2.3.6",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "execa": "^4.0.3",
+    "husky": "^4.3.0",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "rollup": "^2.15.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "semver": "^7.3.2",
+    "ts-jest": "^26.3.0",
+    "typescript": "^3.9.5",
+    "vue": "^2.6.12",
+    "vue-server-renderer": "^2.6.12",
+    "vuepress": "^1.5.4",
+    "vuepress-theme-vue": "^1.1.1",
+    "vuex": "^3.4.0",
+    "@vue/composition-api": "^1.0.0-beta.14"
+  }
+}
