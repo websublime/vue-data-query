@@ -5,9 +5,9 @@ type KeyFunction = () => string;
 
 export type Key = KeyFunction | string | null;
 
-export type StateRef<Data, Error> = {
+export type StateRef<Data = any, Erro = Error> = {
   data: Data | undefined;
-  error: Error | null;
+  error: Erro | null;
   isValidating: boolean;
   revalidate?: () => void;
   key: Key | Ref<string>;
@@ -21,6 +21,7 @@ export type Config = {
   refetchOnReconnect: boolean;
   refetchOnWindowFocus: boolean;
   retry: number;
+  cache: any;
 };
 
 export interface CacheItem {

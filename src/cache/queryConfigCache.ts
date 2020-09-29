@@ -7,6 +7,7 @@
  */
 
 import { Config } from '../types';
+import { MemoryCache } from './memory';
 
 /**
  * Default configuration
@@ -19,13 +20,14 @@ const DEFAULT_CONFIG: Config = {
   refetchOnReconnect: true,
   refetchOnWindowFocus: true,
   retry: 3,
+  cache: new MemoryCache(),
 };
 
 /**
  * Getter configuration
  * @private
  */
-const CONFIG_CACHE = {};
+const CONFIG_CACHE = Object.assign({}, DEFAULT_CONFIG);
 
 /**
  * Retrieve set and merged deafault configuration
