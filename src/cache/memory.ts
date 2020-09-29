@@ -100,7 +100,7 @@ export class MemoryCache {
       expiresAt: timeToLive ? now + timeToLive : Infinity,
     };
 
-    if (timeToLive) {
+    if (Number.isInteger(timeToLive)) {
       const timeout = setTimeout(() => {
         const current = Date.now();
         const isExpired = current >= cacheItem.expiresAt;

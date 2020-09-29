@@ -12,13 +12,12 @@ describe('> Query', () => {
     const vm = new VueCommon<{ data: any }>({
       template: `<div>hello, {{ data }}</div>`,
       setup() {
-        return useQuery('cache-key-not-a-promise');
+        const fetcher = () => 'Hello fetch';
+        return useQuery('cache-key-not-a-promise', fetcher);
       },
     }).$mount();
 
-    console.log(vm.data);
-
-    expect(true).toBeTruthy();
+    expect(vm.data).toEqual('Hello fetch');
 
     //done();
   });
